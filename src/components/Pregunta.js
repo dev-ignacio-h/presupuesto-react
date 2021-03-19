@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Error from './Error';
 
 const Pregunta = () => {
   // Definir state
@@ -14,7 +15,7 @@ const Pregunta = () => {
   const agregarPresupuesto = (e) => {
     e.preventDefault();
     // Validad
-    if(cantidad < 1 || isNaN(cantidad)) {
+    if (cantidad < 1 || isNaN(cantidad)) {
       guardarError(true);
       return;
     }
@@ -25,6 +26,7 @@ const Pregunta = () => {
 
   return (
     <>
+      {error && <Error mensaje={"El Presupuesto es Incorrecto"} />}
       <h2>Coloca tu presupuesto</h2>
       <form onSubmit={agregarPresupuesto}>
         <input
