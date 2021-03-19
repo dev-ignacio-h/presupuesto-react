@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Error from './Error';
 
-const Pregunta = () => {
+const Pregunta = ({ guardarPresupuesto, guardarRestante }) => {
   // Definir state
   const [cantidad, guardarCantidad] = useState(0);
   const [error, guardarError] = useState(false);
@@ -20,13 +20,14 @@ const Pregunta = () => {
       return;
     }
     // Si pasa la validación
-
     guardarError(false);
+    guardarPresupuesto(cantidad);
+    guardarRestante(cantidad);
   };
 
   return (
     <>
-      {error && <Error mensaje={"El Presupuesto es Incorrecto"} />}
+      {error && <Error mensaje={'El Presupuesto es Incorrecto'} />}
       <h2>Coloca tu presupuesto</h2>
       <form onSubmit={agregarPresupuesto}>
         <input
