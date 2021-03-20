@@ -1,18 +1,22 @@
 import { useState } from 'react';
 import Error from './Error';
 
-const Pregunta = ({ guardarPresupuesto, guardarRestante }) => {
+const Pregunta = ({
+  guardarPresupuesto,
+  guardarRestante,
+  actualizarPregunta,
+}) => {
   // Definir state
   const [cantidad, guardarCantidad] = useState(0);
   const [error, guardarError] = useState(false);
 
   // Función que lee el presupuesto
-  const definirPresupuesto = (e) => {
+  const definirPresupuesto = e => {
     guardarCantidad(+e.target.value);
   };
 
   // Submit para definir el presupuesto
-  const agregarPresupuesto = (e) => {
+  const agregarPresupuesto = e => {
     e.preventDefault();
     // Validad
     if (cantidad < 1 || isNaN(cantidad)) {
@@ -23,6 +27,7 @@ const Pregunta = ({ guardarPresupuesto, guardarRestante }) => {
     guardarError(false);
     guardarPresupuesto(cantidad);
     guardarRestante(cantidad);
+    actualizarPregunta(false);
   };
 
   return (
