@@ -1,5 +1,10 @@
-const Error = ({mensaje}) => (
-  <p className="alert alert-danger error">{mensaje}</p>  
+import PropTypes from 'prop-types';
+
+const Error = ({ mensaje }) => (
+  <p className="alert alert-danger error">{mensaje}</p>
 );
 
-export default Error
+Error.propTypes = {
+  mensaje: PropTypes.string.isRequired,
+};
+export default Error;
